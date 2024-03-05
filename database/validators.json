@@ -1,6 +1,6 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "http://example.com/validators.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "validators.json",
   "type": "object",
   "title": "CPSync Validation Schema",
   "required": [
@@ -8,6 +8,7 @@
     "buildings",
     "rooms",
     "colleges",
+    "subjects",
     "courses",
     "sections",
     "ges",
@@ -34,6 +35,11 @@
       "description": "an array of college objects",
       "items": { "$ref": "#/$defs/college" }
     },
+    "subjects": {
+      "type": "array",
+      "description": "an array of subject objects",
+      "items": { "$ref": "#/$defs/subject" }
+    },
     "courses": {
       "type": "array",
       "description": "an array of course objects",
@@ -57,7 +63,7 @@
   },
   "$defs": {
     "term": {
-      "$id": "#term",
+      "$anchor": "#term",
       "type": "object",
       "title": "Term Object Validation",
       "required": ["id", "path", "start", "end", "season", "year"],
@@ -96,7 +102,7 @@
     }
   },
   "building": {
-    "$id": "#building",
+    "$anchor": "#building",
     "type": "object",
     "title": "Building Object Validation",
     "required": ["id", "term_id", "number", "name", "rooms", "path"],
@@ -131,7 +137,7 @@
     }
   },
   "room": {
-    "$id": "#room",
+    "$anchor": "#room",
     "type": "object",
     "title": "Room Object Validation",
     "required": [
@@ -184,42 +190,111 @@
   },
   "college": {
     // TODO: add college properties
-    "$id": "#college",
+    "$anchor": "#college",
     "type": "object",
     "title": "College Object Validation",
-    "required": [],
+    "required": [
+      "id",
+      "term_id",
+      "code",
+      "name",
+      "subjects",
+      "instructors",
+      "path"
+    ],
+    "properties": {}
+  },
+  "subject": {
+    // TODO: add subject properties
+    "$anchor": "#subject",
+    "type": "object",
+    "title": "Subject Object Validation",
+    "required": [
+      "id",
+      "term_id",
+      "college_id",
+      "code",
+      "name",
+      "catalogue_url",
+      "courses",
+      "path"
+    ],
     "properties": {}
   },
   "course": {
     // TODO: add course properties
-    "$id": "#course",
+    "$anchor": "#course",
     "type": "object",
     "title": "Course Object Validation",
-    "required": [],
+    "required": [
+      "id",
+      "term_id",
+      "college_id",
+      "subject_id",
+      "code",
+      "name",
+      "types",
+      "sections",
+      "ge_id",
+      "requirement_code",
+      "requirement_message",
+      "path"
+    ],
     "properties": {}
   },
   "section": {
     // TODO: add section properties
-    "$id": "#section",
+    "$anchor": "#section",
     "type": "object",
     "title": "Section Object Validation",
-    "required": [],
+    "required": [
+      "id",
+      "term_id",
+      "college_id",
+      "subject_id",
+      "course_id",
+      "code",
+      "name",
+      "section_number",
+      "type",
+      "ge_id",
+      "requirement_code",
+      "requirement_message",
+      "days",
+      "start",
+      "end",
+      "instructor_id",
+      "location_id",
+      "enrollment_capacity",
+      "enrolled",
+      "waitlisted",
+      "path"
+    ],
     "properties": {}
   },
   "ge": {
     // TODO: add ge properties
-    "$id": "#ge",
+    "$anchor": "#ge",
     "type": "object",
     "title": "GE Object Validation",
-    "required": [],
+    "required": ["id", "term_id", "code", "name", "courses", "path"],
     "properties": {}
   },
   "instructor": {
     // TODO: add instructor properties
-    "$id": "#instructor",
+    "$anchor": "#instructor",
     "type": "object",
     "title": "Instructor Object Validation",
-    "required": [],
+    "required": [
+      "id",
+      "term_id",
+      "code",
+      "name",
+      "sections",
+      "job_title",
+      "office",
+      "path"
+    ],
     "properties": {}
   }
 }
