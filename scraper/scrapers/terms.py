@@ -7,7 +7,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 
 from scraper.utils import BaseURL
-from scraper.scrapers.base import BaseScraper
+from scraper.base import BaseScraper
 
 starting_path = "index_curr.htm"
 daterange_re = r"^\s*[0-9]{2}/[0-9]{2}/[0-9]{4}\s+to\s+[0-9]{2}/[0-9]{2}/[0-9]{4}\s*$"

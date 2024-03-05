@@ -15,27 +15,16 @@ class BaseScraper:
     name = "BaseScraper"
     base_url: BaseURL
 
-    def __init__(self, db: DB) -> None:
+    def __init__(self, db: DB, cache: dict[str, str] | None = None) -> None:
         self.db = db
         self.cache: dict[str, str] = {}  # Content cache {path: text-content}
 
-    # @abstractmethod
-    # def get(self, query: Query) -> dict[Any, Any]:
-    #     """
-    #     Get the data from cached content \\
-    #     `self.fetch_content` can be used for implementation
-    #     """
-
-    # @abstractmethod
-    # def path(self, query: Query) -> str:
-    #     """Get the path for the specified arguments"""
-
-    def soup(self, path: str) -> BeautifulSoup:
+    def soup(self, path: str, sleep: float = 0.3) -> BeautifulSoup:
         """
         Fetch and cache the raw text on the specified page \\
         `HTTPError` is raised if one occurred
         """
-        time.sleep(0.3)
+        time.sleep(sleep)
         content = self.cache.get(path, None)
         if content is None:
             response = requests.get(self.base_url.value + path)

@@ -4,69 +4,128 @@ term_validator = {
     "$jsonSchema": {
         "bsonType": "object",
         "title": "Term Object Validation",
-        "required": ["id", "path", "start", "end", "season", "year"],
+        "additionalProperties": False,
+        "required": ["_id", "path", "start", "end", "season", "year"],
         "properties": {
-            "id": {
+            "_id": {
                 "bsonType": "string",
-                "description": "'id' must be a string and is required",
+                "description": "term id",
+            },
+            "start": {
+                "bsonType": "date",
+                "description": "the term's start date",
+            },
+            "end": {
+                "bsonType": "date",
+                "description": "the term's end date",
+            },
+            "buildings": {
+                "bsonType": "array",
+                "description": "an array of building ids associated with the term",
+                "items": { "bsonType": "string" },
+            },
+            "colleges": {
+                "bsonType": "array",
+                "description": "an array of college ids associated with the term",
+                "items": { "bsonType": "string" },
             },
             "path": {
                 "bsonType": "string",
-                "description": "'path' must be a string and is required",
+                "description": "the path to the term's page (useful for end users)",
+            }
+        }
+    }
+}
+
+building_validator = {
+    "$jsonSchema": {
+        "bsonType": "object",
+        "title": "Building Object Validation",
+        "additionalProperties": False,
+        "required": ["_id", "term_id", "number", "name", "rooms", "path"],
+        "properties": {
+            "_id": {
+                "bsonType": "string",
+                "description": "building id",
             },
-            "start": {
+            "term_id": {
+                "bsonType": "string",
+                "description": "the term id associated with the building",
+            },
+            "number": {
+                "bsonType": "string",
+                "description": "the building number",
+            },
+            "name": {
+                "bsonType": "string",
+                "description": "the building's friendly name",
+            },
+            "rooms": {
+                "bsonType": "array",
+                "description": "an array of room ids for rooms in the building",
+                "items": { "bsonType": "string" },
+            },
+            "path": {
+                "bsonType": "string",
+                "description": "the path to the building's page (useful for end users)",
+            }
+        }
+    }
+}
+
+room_validator = {
+    "$jsonSchema": {
+        "bsonType": "object",
+        "title": "Room Object Validation",
+        "additionalProperties": False,
+        "required": [
+            "_id", "term_id", "building_id", "number", "sections",
+            "schedule_path", "registered_location_capacity", "path"
+        ],
+        "properties": {
+            "_id": {
+                "bsonType": "string",
+                "description": "room id",
+            },
+            "term_id": {
+                "bsonType": "string",
+                "description": "the term id associated with the room",
+            },
+            "building_id": {
+                "bsonType": "string",
+                "description": "the building id of the building the room is in",
+            },
+            "number": {
+                "bsonType": "string",
+                "description": "the room number",
+            },
+            "sections": {
+                "bsonType": "array",
+                "description": "an array of section ids for sections held in the room",
+                "items": { "bsonType": "string" },
+            },
+            "schedule_path": {
+                "bsonType": "string",
+                "description": "the path to the room's schedule page (useful for end users)",
+            },
+            "registered_location_capacity": {
                 "bsonType": "int",
-                "description": "'start' must be an int and is required",
+                "description": "the room's registered location capacity",
             },
-            "end": {
-                "bsonType": "int",
-                "description": "'end' must be an int and is required",
-            },
-        },
+            "path": {
+                "bsonType": "string",
+                "description": "the path to the room's page (useful for end users)",
+            }
+        }
     }
 }
 
-college_validator = {  # TODO
-    "$jsonSchema": {
-        "bsonType": "object",
-        "title": "College Object Validation",
-        "required": [],
-        "properties": {},
-    }
-}
+college_validator = {}          # TODO: Add  college   validator
 
-department_validator = {  # TODO
-    "$jsonSchema": {
-        "bsonType": "object",
-        "title": "Department Object Validation",
-        "required": [],
-        "properties": {},
-    }
-}
+course_validator = {}           # TODO: Add   course   validator
 
-course_validator = {  # TODO
-    "$jsonSchema": {
-        "bsonType": "object",
-        "title": "Course Object Validation",
-        "required": [],
-        "properties": {},
-    }
-}
+section_validator = {}          # TODO: Add  section   validator
 
-section_validator = {  # TODO
-    "$jsonSchema": {
-        "bsonType": "object",
-        "title": "Section Object Validation",
-        "required": [],
-        "properties": {},
-    }
-}
+ge_validator = {}               # TODO: Add     ge     validator
 
-instructor_validator = {  # TODO
-    "$jsonSchema": {
-        "bsonType": "object",
-        "title": "Instructor Object Validation",
-        "required": [],
-        "properties": {},
-    }
-}
+instructor_validator = {}       # TODO: Add instructor validator
