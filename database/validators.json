@@ -1,0 +1,225 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/validators.json",
+  "type": "object",
+  "title": "CPSync Validation Schema",
+  "required": [
+    "terms",
+    "buildings",
+    "rooms",
+    "colleges",
+    "courses",
+    "sections",
+    "ges",
+    "instructors"
+  ],
+  "properties": {
+    "terms": {
+      "type": "array",
+      "description": "an array of term objects",
+      "items": { "$ref": "#/$defs/term" }
+    },
+    "buildings": {
+      "type": "array",
+      "description": "an array of building objects",
+      "items": { "$ref": "#/$defs/building" }
+    },
+    "rooms": {
+      "type": "array",
+      "description": "an array of room objects",
+      "items": { "$ref": "#/$defs/room" }
+    },
+    "colleges": {
+      "type": "array",
+      "description": "an array of college objects",
+      "items": { "$ref": "#/$defs/college" }
+    },
+    "courses": {
+      "type": "array",
+      "description": "an array of course objects",
+      "items": { "$ref": "#/$defs/course" }
+    },
+    "sections": {
+      "type": "array",
+      "description": "an array of section objects",
+      "items": { "$ref": "#/$defs/section" }
+    },
+    "ges": {
+      "type": "array",
+      "description": "an array of ge objects",
+      "items": { "$ref": "#/$defs/ge" }
+    },
+    "instructors": {
+      "type": "array",
+      "description": "an array of instructor objects",
+      "items": { "$ref": "#/$defs/instructor" }
+    }
+  },
+  "$defs": {
+    "term": {
+      "$id": "#term",
+      "type": "object",
+      "title": "Term Object Validation",
+      "required": ["id", "path", "start", "end", "season", "year"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "term id"
+        },
+        "start": {
+          "type": "string",
+          "description": "the term's start date (MM/DD/YYYY)"
+        },
+        "end": {
+          "type": "string",
+          "description": "the term's end date"
+        },
+        "buildings": {
+          "type": "array",
+          "description": "an array of building ids associated with the term",
+          "items": {
+            "type": "string"
+          }
+        },
+        "colleges": {
+          "type": "array",
+          "description": "an array of college ids associated with the term",
+          "items": {
+            "type": "string"
+          }
+        },
+        "path": {
+          "type": "string",
+          "description": "the path to the term's page (useful for end users)"
+        }
+      }
+    }
+  },
+  "building": {
+    "$id": "#building",
+    "type": "object",
+    "title": "Building Object Validation",
+    "required": ["id", "term_id", "number", "name", "rooms", "path"],
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "building id"
+      },
+      "term_id": {
+        "type": "string",
+        "description": "the term id associated with the building"
+      },
+      "number": {
+        "type": "string",
+        "description": "the building number"
+      },
+      "name": {
+        "type": "string",
+        "description": "the building's friendly name"
+      },
+      "rooms": {
+        "type": "array",
+        "description": "an array of room ids for rooms in the building",
+        "items": {
+          "type": "string"
+        }
+      },
+      "path": {
+        "type": "string",
+        "description": "the path to the building's page (useful for end users)"
+      }
+    }
+  },
+  "room": {
+    "$id": "#room",
+    "type": "object",
+    "title": "Room Object Validation",
+    "required": [
+      "id",
+      "term_id",
+      "building_id",
+      "number",
+      "sections",
+      "schedule_path",
+      "registered_location_capacity",
+      "path"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "room id"
+      },
+      "term_id": {
+        "type": "string",
+        "description": "the term id associated with the room"
+      },
+      "building_id": {
+        "type": "string",
+        "description": "the building id of the building the room is in"
+      },
+      "number": {
+        "type": "string",
+        "description": "the room number"
+      },
+      "sections": {
+        "type": "array",
+        "description": "an array of section ids for sections held in the room",
+        "items": {
+          "type": "string"
+        }
+      },
+      "schedule_path": {
+        "type": "string",
+        "description": "the path to the room's schedule page (useful for end users)"
+      },
+      "registered_location_capacity": {
+        "type": "int",
+        "description": "the room's registered location capacity"
+      },
+      "path": {
+        "type": "string",
+        "description": "the path to the room's page (useful for end users)"
+      }
+    }
+  },
+  "college": {
+    // TODO: add college properties
+    "$id": "#college",
+    "type": "object",
+    "title": "College Object Validation",
+    "required": [],
+    "properties": {}
+  },
+  "course": {
+    // TODO: add course properties
+    "$id": "#course",
+    "type": "object",
+    "title": "Course Object Validation",
+    "required": [],
+    "properties": {}
+  },
+  "section": {
+    // TODO: add section properties
+    "$id": "#section",
+    "type": "object",
+    "title": "Section Object Validation",
+    "required": [],
+    "properties": {}
+  },
+  "ge": {
+    // TODO: add ge properties
+    "$id": "#ge",
+    "type": "object",
+    "title": "GE Object Validation",
+    "required": [],
+    "properties": {}
+  },
+  "instructor": {
+    // TODO: add instructor properties
+    "$id": "#instructor",
+    "type": "object",
+    "title": "Instructor Object Validation",
+    "required": [],
+    "properties": {}
+  }
+}
