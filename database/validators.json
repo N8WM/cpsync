@@ -189,7 +189,6 @@
     }
   },
   "college": {
-    // TODO: add college properties
     "$anchor": "#college",
     "type": "object",
     "title": "College Object Validation",
@@ -202,10 +201,44 @@
       "instructors",
       "path"
     ],
-    "properties": {}
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "college id"
+      },
+      "term_id": {
+        "type": "string",
+        "description": "the term id associated with the college"
+      },
+      "code": {
+        "type": "string",
+        "description": "the college code"
+      },
+      "name": {
+        "type": "string",
+        "description": "the college's friendly name"
+      },
+      "subjects": {
+        "type": "array",
+        "description": "an array of subject ids associated with the college",
+        "items": {
+          "type": "string"
+        }
+      },
+      "instructors": {
+        "type": "array",
+        "description": "an array of instructor ids associated with the college",
+        "items": {
+          "type": "string"
+        }
+      },
+      "path": {
+        "type": "string",
+        "description": "the path to the college's page (useful for end users)"
+      }
+    }
   },
   "subject": {
-    // TODO: add subject properties
     "$anchor": "#subject",
     "type": "object",
     "title": "Subject Object Validation",
@@ -219,10 +252,45 @@
       "courses",
       "path"
     ],
-    "properties": {}
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "subject id"
+      },
+      "term_id": {
+        "type": "string",
+        "description": "the term id associated with the subject"
+      },
+      "college_id": {
+        "type": "string",
+        "description": "the college id associated with the subject"
+      },
+      "code": {
+        "type": "string",
+        "description": "the subject code"
+      },
+      "name": {
+        "type": "string",
+        "description": "the subject's friendly name"
+      },
+      "catalogue_url": {
+        "type": "string",
+        "description": "the url to the subject's catalogue page (useful for end users)"
+      },
+      "courses": {
+        "type": "array",
+        "description": "an array of course ids associated with the subject",
+        "items": {
+          "type": "string"
+        }
+      },
+      "path": {
+        "type": "string",
+        "description": "the path to the subject's page (useful for end users)"
+      }
+    }
   },
   "course": {
-    // TODO: add course properties
     "$anchor": "#course",
     "type": "object",
     "title": "Course Object Validation",
@@ -240,10 +308,64 @@
       "requirement_message",
       "path"
     ],
-    "properties": {}
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "course id"
+      },
+      "term_id": {
+        "type": "string",
+        "description": "the term id associated with the course"
+      },
+      "college_id": {
+        "type": "string",
+        "description": "the college id associated with the course"
+      },
+      "subject_id": {
+        "type": "string",
+        "description": "the subject id associated with the course"
+      },
+      "code": {
+        "type": "string",
+        "description": "the course code"
+      },
+      "name": {
+        "type": "string",
+        "description": "the course's friendly name"
+      },
+      "types": {
+        "type": "array",
+        "description": "an array of types associated with sections of the course",
+        "items": {
+          "type": "string"
+        }
+      },
+      "sections": {
+        "type": "array",
+        "description": "an array of section ids associated with the course",
+        "items": {
+          "type": "string"
+        }
+      },
+      "ge_id": {
+        "type": ["string", "null"],
+        "description": "the ge id associated with the course, if one exists"
+      },
+      "requirement_code": {
+        "type": ["string", "null"],
+        "description": "the requirement code associated with the course, if one exists"
+      },
+      "requirement_message": {
+        "type": ["string", "null"],
+        "description": "the requirement message associated with the course, if one exists"
+      },
+      "path": {
+        "type": "string",
+        "description": "the path to the course's page (useful for end users)"
+      }
+    }
   },
   "section": {
-    // TODO: add section properties
     "$anchor": "#section",
     "type": "object",
     "title": "Section Object Validation",
@@ -270,18 +392,129 @@
       "waitlisted",
       "path"
     ],
-    "properties": {}
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "section id"
+      },
+      "term_id": {
+        "type": "string",
+        "description": "the term id associated with the section"
+      },
+      "college_id": {
+        "type": "string",
+        "description": "the college id associated with the section"
+      },
+      "subject_id": {
+        "type": "string",
+        "description": "the subject id associated with the section"
+      },
+      "course_id": {
+        "type": "string",
+        "description": "the course id associated with the section"
+      },
+      "code": {
+        "type": "string",
+        "description": "the section code"
+      },
+      "name": {
+        "type": "string",
+        "description": "the section's friendly name"
+      },
+      "section_number": {
+        "type": "string",
+        "description": "the section number"
+      },
+      "type": {
+        "type": "string",
+        "description": "the section type"
+      },
+      "ge_id": {
+        "type": ["string", "null"],
+        "description": "the ge id associated with the section, if one exists"
+      },
+      "requirement_code": {
+        "type": ["string", "null"],
+        "description": "the requirement code associated with the section, if one exists"
+      },
+      "requirement_message": {
+        "type": ["string", "null"],
+        "description": "the requirement message associated with the section, if one exists"
+      },
+      "days": {
+        "type": "string",
+        "description": "the days the section meets"
+      },
+      "start": {
+        "type": "string",
+        "description": "the start time of the section"
+      },
+      "end": {
+        "type": "string",
+        "description": "the end time of the section"
+      },
+      "instructor_id": {
+        "type": "string",
+        "description": "the id of the instructor who teaches the section"
+      },
+      "location_id": {
+        "type": "string",
+        "description": "the location id associated with the section"
+      },
+      "enrollment_capacity": {
+        "type": "integer",
+        "description": "the enrollment capacity of the section"
+      },
+      "enrolled": {
+        "type": "integer",
+        "description": "the number of students enrolled in the section"
+      },
+      "waitlisted": {
+        "type": "integer",
+        "description": "the number of students waitlisted in the section"
+      },
+      "path": {
+        "type": "string",
+        "description": "the path to the section's page (useful for end users)"
+      }
+    }
   },
   "ge": {
-    // TODO: add ge properties
     "$anchor": "#ge",
     "type": "object",
     "title": "GE Object Validation",
     "required": ["id", "term_id", "code", "name", "courses", "path"],
-    "properties": {}
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "ge id"
+      },
+      "term_id": {
+        "type": "string",
+        "description": "the term id associated with the ge"
+      },
+      "code": {
+        "type": "string",
+        "description": "the ge code"
+      },
+      "name": {
+        "type": "string",
+        "description": "the ge's friendly name"
+      },
+      "courses": {
+        "type": "array",
+        "description": "an array of course ids associated with the ge",
+        "items": {
+          "type": "string"
+        }
+      },
+      "path": {
+        "type": "string",
+        "description": "the path to the ge's page (useful for end users)"
+      }
+    }
   },
   "instructor": {
-    // TODO: add instructor properties
     "$anchor": "#instructor",
     "type": "object",
     "title": "Instructor Object Validation",
@@ -295,6 +528,42 @@
       "office",
       "path"
     ],
-    "properties": {}
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "instructor id"
+      },
+      "term_id": {
+        "type": "string",
+        "description": "the term id associated with the instructor"
+      },
+      "code": {
+        "type": "string",
+        "description": "the instructor code"
+      },
+      "name": {
+        "type": "string",
+        "description": "the instructor's friendly name"
+      },
+      "sections": {
+        "type": "array",
+        "description": "an array of section ids the professor teaches",
+        "items": {
+          "type": "string"
+        }
+      },
+      "job_title": {
+        "type": "string",
+        "description": "the instructor's job title"
+      },
+      "office": {
+        "type": "string",
+        "description": "the room id of the instructor's office"
+      },
+      "path": {
+        "type": "string",
+        "description": "the path to the instructor's page (useful for end users)"
+      }
+    }
   }
 }

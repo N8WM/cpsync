@@ -126,6 +126,7 @@ def get_prev_path(soup: BeautifulSoup) -> str | None:
         return None
     return a.attrs.get("href", None)
 
+
 def get_next_path(soup: BeautifulSoup) -> str | None:
     """Get the next term path"""
     span = soup.select_one("#masthead1 span[title='Next Term']")
@@ -136,6 +137,7 @@ def get_next_path(soup: BeautifulSoup) -> str | None:
         return None
     return a.attrs.get("href", None)
 
+
 def get_id(soup: BeautifulSoup) -> str | None:
     """Get the term id"""
     spans = soup.select("#descriptor span.term")
@@ -143,6 +145,7 @@ def get_id(soup: BeautifulSoup) -> str | None:
     if span is None:
         return None
     return span.text.strip()
+
 
 def get_daterange(soup: BeautifulSoup) -> tuple[int, int] | None:
     """Get the term daterange"""
@@ -158,6 +161,7 @@ def get_daterange(soup: BeautifulSoup) -> tuple[int, int] | None:
     end = datetime.strptime(end.strip(), "%m/%d/%Y").timestamp()
     return round(start), round(end)
 
+
 def assemble_term_details(soup: BeautifulSoup, path: str) -> TermDetails | None:
     """Get the term details"""
     id = get_id(soup)
@@ -165,6 +169,7 @@ def assemble_term_details(soup: BeautifulSoup, path: str) -> TermDetails | None:
     if id is None or daterange is None:
         return None
     return TermDetails(id, path, *daterange)
+
 
 def daterange_to_season_year(start_ts: int, end_ts: int) -> tuple[str, int]:
     """Get the season for the daterange"""
@@ -181,12 +186,14 @@ def daterange_to_season_year(start_ts: int, end_ts: int) -> tuple[str, int]:
         season = "Fall"
     return season, avg.year
 
+
 def main() -> None:
     ts = TermsScraper()
     terms = ts.get()
 
     for term in terms:
         print(term)
+
 
 if __name__ == "__main__":
     main()
