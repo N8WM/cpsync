@@ -66,7 +66,16 @@
       "$anchor": "#term",
       "type": "object",
       "title": "Term Object Validation",
-      "required": ["id", "start", "end", "buildings", "colleges", "path"],
+      "required": [
+        "id",
+        "start",
+        "end",
+        "season",
+        "year",
+        "buildings",
+        "colleges",
+        "path"
+      ],
       "properties": {
         "id": {
           "type": "string",
@@ -79,6 +88,14 @@
         "end": {
           "type": "string",
           "description": "the term's end date"
+        },
+        "season": {
+          "type": "string",
+          "description": "the term's season (ex. 'Fall', 'Spring', 'Winter')"
+        },
+        "year": {
+          "type": "int",
+          "description": "the term's year"
         },
         "buildings": {
           "type": "array",
@@ -117,11 +134,11 @@
       },
       "number": {
         "type": "string",
-        "description": "the building number"
+        "description": "the building number (ex. 038, 006, 181)"
       },
       "name": {
         "type": "string",
-        "description": "the building's friendly name"
+        "description": "the building's friendly name (ex. 'Pilling Building', 'Engineering West', 'Crops Unit')"
       },
       "rooms": {
         "type": "array",
@@ -165,7 +182,7 @@
       },
       "number": {
         "type": "string",
-        "description": "the room number"
+        "description": "the room number (ex. '014-255', '002-0101', '038-0121', '045-0206')"
       },
       "sections": {
         "type": "array",
@@ -386,7 +403,7 @@
       "start",
       "end",
       "instructor_id",
-      "location_id",
+      "room_id",
       "enrollment_capacity",
       "enrolled",
       "waitlisted",
@@ -457,9 +474,9 @@
         "type": "string",
         "description": "the id of the instructor who teaches the section"
       },
-      "location_id": {
+      "room_id": {
         "type": "string",
-        "description": "the location id associated with the section"
+        "description": "the room id associated with the section"
       },
       "enrollment_capacity": {
         "type": "integer",
