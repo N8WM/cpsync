@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Term Object Validation",
+  "description": "Validation schema for term objects. A term at Cal Poly is commonly called a quarter. If one is not inferrable from a query, assume the present term.",
+  "required": [
+    "_id",
+    "start",
+    "end",
+    "season",
+    "year",
+    "buildings",
+    "colleges",
+    "path"
+  ],
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "the unique identifier for the term object"
+    },
+    "start": {
+      "type": "integer",
+      "description": "the term's start date in simplified ISO 8601: YYYYMMDD (ex. 20240314)"
+    },
+    "end": {
+      "type": "integer",
+      "description": "the term's end date in simplified ISO 8601: YYYYMMDD (ex. 20240314)"
+    },
+    "season": {
+      "type": "string",
+      "description": "the term's season (ex. 'Fall', 'Spring', 'Winter')"
+    },
+    "year": {
+      "type": "integer",
+      "description": "the term's year (ex. 2024)"
+    },
+    "buildings": {
+      "type": "array",
+      "description": "an array of building ids associated with the term",
+      "items": {
+        "type": "string"
+      }
+    },
+    "colleges": {
+      "type": "array",
+      "description": "an array of college ids associated with the term",
+      "items": {
+        "type": "string"
+      }
+    },
+    "path": {
+      "type": "string",
+      "description": "the path to the term's page (useful for end users)"
+    }
+  }
+}

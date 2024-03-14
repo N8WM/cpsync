@@ -1,12 +1,13 @@
 from pymongo import MongoClient
 
-from database import validators as vds
+from database import schemas  # TODO: support for individual validators
 
 DBNAME = "cpsync"
 
 
 class DB:
     """Database class for MongoDB client and database"""
+
     def __init__(self) -> None:
         self.client = MongoClient("localhost", 27017)
         self.db = self.client[DBNAME]
@@ -22,12 +23,15 @@ class DB:
         self.client.drop_database(DBNAME)
         self.db = self.client[DBNAME]
 
-        self.db.create_collection("terms", validator=vds.term_validator)
-        self.db.create_collection("colleges", validator=vds.college_validator)
-        self.db.create_collection("departments", validator=vds.department_validator)
-        self.db.create_collection("courses", validator=vds.course_validator)
-        self.db.create_collection("sections", validator=vds.section_validator)
-        self.db.create_collection("instructors", validator=vds.instructor_validator)
+        self.db.create_collection("terms", validator=schemas.term)
+        self.db.create_collection("buildings", validator=schemas.building)
+        self.db.create_collection("rooms", validator=schemas.room)
+        self.db.create_collection("colleges", validator=schemas.college)
+        self.db.create_collection("subjects", validator=schemas.subject)
+        self.db.create_collection("courses", validator=schemas.course)
+        self.db.create_collection("sections", validator=schemas.section)
+        self.db.create_collection("ges", validator=schemas.ge)
+        self.db.create_collection("instructors", validator=schemas.instructor)
 
     def close(self) -> None:
         """Close the database connection"""
