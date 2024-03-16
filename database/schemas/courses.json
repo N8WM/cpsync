@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "bsonType": "object",
+  "title": "Course Object Validation",
+  "additionalProperties": false,
+  "required": [
+    "_id",
+    "term_id",
+    "college_id",
+    "subject_id",
+    "code",
+    "name",
+    "types",
+    "sections",
+    "ge_id",
+    "requirement_code",
+    "requirement_message",
+    "url"
+  ],
+  "properties": {
+    "_id": {
+      "bsonType": "string",
+      "description": "the unique identifier for the course object"
+    },
+    "term_id": {
+      "bsonType": "string",
+      "description": "the term id associated with the course"
+    },
+    "college_id": {
+      "bsonType": "string",
+      "description": "the college id associated with the course"
+    },
+    "subject_id": {
+      "bsonType": "string",
+      "description": "the subject id associated with the course"
+    },
+    "code": {
+      "bsonType": "string",
+      "description": "the course code (ex. 'CSC-453', 'KINE-100', 'MATH-141', 'ENGL-101')"
+    },
+    "name": {
+      "bsonType": "string",
+      "description": "the course's friendly name (ex. 'Operating Systems', 'Introduction to Kinesiology', 'Calculus I', 'Composition I')"
+    },
+    "types": {
+      "bsonType": "array",
+      "description": "an array of types associated with sections of the course (ex. 'Lecture', 'Laboratory', 'Independent Study')",
+      "items": {
+        "bsonType": "string",
+        "description": "one of the section types associated with the course",
+        "enum": [
+          "Lecture",
+          "Laboratory",
+          "Independent Study",
+          "Seminar",
+          "Activity",
+          "Discussion"
+        ]
+      }
+    },
+    "sections": {
+      "bsonType": "array",
+      "description": "an array of section ids associated with the course",
+      "items": {
+        "bsonType": "string",
+        "description": "the section id"
+      }
+    },
+    "ge_id": {
+      "bsonType": ["string", "null"],
+      "description": "the general education id associated with the course, if one exists"
+    },
+    "requirement_code": {
+      "bsonType": ["string", "null"],
+      "description": "the requirement code associated with the course, if one exists (code representing a set of requirements for the course)"
+    },
+    "requirement_message": {
+      "bsonType": ["string", "null"],
+      "description": "the requirement message associated with the course, if one exists (explains what is required to take this course)"
+    },
+    "url": {
+      "bsonType": "string",
+      "description": "the url to the course's page (useful for end users)"
+    }
+  }
+}

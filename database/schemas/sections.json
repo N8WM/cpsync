@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "bsonType": "object",
+  "title": "Section Object Validation",
+  "description": "Validation schema for section objects. A section at Cal Poly is a specific instance of a class.",
+  "additionalProperties": false,
+  "required": [
+    "_id",
+    "term_id",
+    "college_id",
+    "subject_id",
+    "course_id",
+    "code",
+    "alias",
+    "section_number",
+    "type",
+    "ge_id",
+    "requirement_code",
+    "requirement_message",
+    "days",
+    "start",
+    "end",
+    "instructor_id",
+    "room_id",
+    "enrollment_capacity",
+    "enrolled",
+    "waitlisted",
+    "url"
+  ],
+  "properties": {
+    "_id": {
+      "bsonType": "string",
+      "description": "the unique identifier for the section object"
+    },
+    "term_id": {
+      "bsonType": "string",
+      "description": "the term id associated with the section"
+    },
+    "college_id": {
+      "bsonType": "string",
+      "description": "the college id associated with the section"
+    },
+    "subject_id": {
+      "bsonType": "string",
+      "description": "the subject id associated with the section"
+    },
+    "course_id": {
+      "bsonType": "string",
+      "description": "the course id associated with the section"
+    },
+    "code": {
+      "bsonType": "string",
+      "description": "the section code (ex. 8201, 8202)"
+    },
+    "alias": {
+      "bsonType": "string",
+      "description": "the section's alias; includes the course code and section number (ex. 'CSC-582-01', 'CSC-582-02')"
+    },
+    "section_number": {
+      "bsonType": "string",
+      "description": "the section number (ex. '01', '02')"
+    },
+    "type": {
+      "bsonType": "string",
+      "description": "the section type (ex. 'Lecture', 'Laboratory', 'Independent Study')",
+      "enum": [
+        "Lecture",
+        "Laboratory",
+        "Independent Study",
+        "Seminar",
+        "Activity",
+        "Discussion"
+      ]
+    },
+    "ge_id": {
+      "bsonType": ["string", "null"],
+      "description": "the general education id associated with the section, if one exists"
+    },
+    "requirement_code": {
+      "bsonType": ["string", "null"],
+      "description": "the requirement code associated with the section, if one exists (code representing a set of requirements for the course)"
+    },
+    "requirement_message": {
+      "bsonType": ["string", "null"],
+      "description": "the requirement message associated with the section, if one exists (explains what is required to take this course)"
+    },
+    "days": {
+      "bsonType": "string",
+      "description": "a code for the days of the week the section meets (ex. 'MWF', 'TR'; letters generally ordered by day of the week)",
+      "pattern": "^[MTWRF]+$"
+    },
+    "start": {
+      "bsonType": "string",
+      "description": "the start time of the section (ex. '04:10 PM', '10:40 AM')"
+    },
+    "end": {
+      "bsonType": "string",
+      "description": "the end time of the section (ex. '05:00 PM', '11:40 AM')"
+    },
+    "instructor_id": {
+      "bsonType": "string",
+      "description": "the id of the instructor who teaches the section"
+    },
+    "room_id": {
+      "bsonType": "string",
+      "description": "the id of the room where the section meets"
+    },
+    "enrollment_capacity": {
+      "bsonType": "int",
+      "description": "the maximum number of students that can enroll in the section"
+    },
+    "enrolled": {
+      "bsonType": "int",
+      "description": "the number of students enrolled in the section"
+    },
+    "waitlisted": {
+      "bsonType": "int",
+      "description": "the number of students waitlisted for the section"
+    },
+    "url": {
+      "bsonType": "string",
+      "description": "the url to the section's page (useful for end users)"
+    }
+  }
+}

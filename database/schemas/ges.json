@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "bsonType": "object",
+  "title": "GE Object Validation",
+  "description": "Validation schema for GE objects. A GE at Cal Poly is a general education requirement that certain students must fulfill in order to graduate.",
+  "additionalProperties": false,
+  "required": ["_id", "term_id", "code", "name", "courses", "url"],
+  "properties": {
+    "_id": {
+      "bsonType": "string",
+      "description": "the unique identifier for the GE object"
+    },
+    "term_id": {
+      "bsonType": "string",
+      "description": "the term id associated with the GE"
+    },
+    "code": {
+      "bsonType": "string",
+      "description": "the GE code (ex. 'A1', 'B4', 'C2')"
+    },
+    "name": {
+      "bsonType": "string",
+      "description": "the GE's friendly name (ex. 'GEC2 (C1 or C2 pre-2020 GE)')"
+    },
+    "courses": {
+      "bsonType": "array",
+      "description": "an array of course ids for courses that fulfill the GE",
+      "items": {
+        "bsonType": "string",
+        "description": "the course id"
+      }
+    },
+    "url": {
+      "bsonType": "string",
+      "description": "the url to the GE's page (useful for end users)"
+    }
+  }
+}

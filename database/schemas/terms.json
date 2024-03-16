@@ -1,8 +1,9 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "bsonType": "object",
   "title": "Term Object Validation",
   "description": "Validation schema for term objects. A term at Cal Poly is commonly called a quarter. If one is not inferrable from a query, assume the present term.",
+  "additionalProperties": false,
   "required": [
     "_id",
     "start",
@@ -11,46 +12,50 @@
     "year",
     "buildings",
     "colleges",
-    "path"
+    "url"
   ],
   "properties": {
     "_id": {
-      "type": "string",
+      "bsonType": "string",
       "description": "the unique identifier for the term object"
     },
     "start": {
-      "type": "integer",
+      "bsonType": "int",
       "description": "the term's start date in simplified ISO 8601: YYYYMMDD (ex. 20240314)"
     },
     "end": {
-      "type": "integer",
+      "bsonType": "int",
       "description": "the term's end date in simplified ISO 8601: YYYYMMDD (ex. 20240314)"
     },
     "season": {
-      "type": "string",
-      "description": "the term's season (ex. 'Fall', 'Spring', 'Winter')"
+      "bsonType": "string",
+      "description": "the term's season (ex. 'Fall', 'Spring', 'Winter')",
+      "enum": ["Fall", "Winter", "Spring", "Summer"]
     },
     "year": {
-      "type": "integer",
-      "description": "the term's year (ex. 2024)"
+      "bsonType": "int",
+      "description": "the term's year (ex. 2024)",
+      "minimum": 2018
     },
     "buildings": {
-      "type": "array",
+      "bsonType": "array",
       "description": "an array of building ids associated with the term",
       "items": {
-        "type": "string"
+        "type": "string",
+        "description": "the building id"
       }
     },
     "colleges": {
-      "type": "array",
+      "bsonType": "array",
       "description": "an array of college ids associated with the term",
       "items": {
-        "type": "string"
+        "type": "string",
+        "description": "the college id"
       }
     },
-    "path": {
-      "type": "string",
-      "description": "the path to the term's page (useful for end users)"
+    "url": {
+      "bsonType": "string",
+      "description": "the url to the term's page (useful for end users)"
     }
   }
 }

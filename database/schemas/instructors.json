@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "bsonType": "object",
+  "title": "Instructor Object Validation",
+  "additionalProperties": false,
+  "required": [
+    "_id",
+    "term_id",
+    "code",
+    "last_name",
+    "full_name",
+    "sections",
+    "job_title",
+    "office",
+    "url"
+  ],
+  "properties": {
+    "_id": {
+      "bsonType": "string",
+      "description": "the unique identifier for the instructor object"
+    },
+    "term_id": {
+      "bsonType": "string",
+      "description": "the term id associated with the instructor"
+    },
+    "code": {
+      "bsonType": "string",
+      "description": "the instructors code; their username according to their university email (ex. 'foaad', 'amgrow')"
+    },
+    "last_name": {
+      "bsonType": "string",
+      "description": "the last name of the instructor"
+    },
+    "full_name": {
+      "bsonType": "string",
+      "description": "the full name of the instructor (last name, first name [optional middle name or initial.])"
+    },
+    "sections": {
+      "bsonType": "array",
+      "description": "an array of section ids the instructor teaches",
+      "items": {
+        "bsonType": "string",
+        "description": "the section id"
+      }
+    },
+    "job_title": {
+      "bsonType": "string",
+      "description": "the job title of the instructor"
+    },
+    "office": {
+      "bsonType": "string",
+      "description": "the room id of the instructor's office"
+    },
+    "url": {
+      "bsonType": "string",
+      "description": "the url to the instructor's page (useful for end users)"
+    }
+  }
+}

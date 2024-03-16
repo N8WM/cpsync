@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "bsonType": "object",
+  "title": "College Object Validation",
+  "description": "Validation schema for college objects. A college at Cal Poly labels a set of subjects.",
+  "additionalProperties": false,
+  "required": [
+    "_id",
+    "term_id",
+    "code",
+    "name",
+    "subjects",
+    "instructors",
+    "url"
+  ],
+  "properties": {
+    "_id": {
+      "bsonType": "string",
+      "description": "the unique identifier for the college object"
+    },
+    "term_id": {
+      "bsonType": "string",
+      "description": "the term id associated with the college"
+    },
+    "code": {
+      "bsonType": "string",
+      "description": "the college code (ex. '52-CENG', '10-CAGR', '76-CSM')"
+    },
+    "name": {
+      "bsonType": "string",
+      "description": "the college's friendly name (ex. 'College of Engineering', 'College of Ag, Food & Envr Sci', 'College of Science & Math')"
+    },
+    "subjects": {
+      "bsonType": "array",
+      "description": "an array of subject ids associated with the college",
+      "items": {
+        "bsonType": "string",
+        "description": "the subject id"
+      }
+    },
+    "instructors": {
+      "bsonType": "array",
+      "description": "an array of instructor ids associated with the college",
+      "items": {
+        "bsonType": "string",
+        "description": "the instructor id"
+      }
+    },
+    "url": {
+      "bsonType": "string",
+      "description": "the url to the college's page (useful for end users)"
+    }
+  }
+}

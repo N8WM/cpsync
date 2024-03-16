@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "bsonType": "object",
+  "title": "Building Object Validation",
+  "additionalProperties": false,
+  "required": ["_id", "term_id", "number", "name", "rooms", "url"],
+  "properties": {
+    "_id": {
+      "bsonType": "string",
+      "description": "the unique identifier for the building object"
+    },
+    "term_id": {
+      "bsonType": "string",
+      "description": "the term id associated with the building"
+    },
+    "number": {
+      "bsonType": "string",
+      "description": "the building number (ex. '038', '006', '014')"
+    },
+    "name": {
+      "bsonType": "string",
+      "description": "the building's friendly name (ex. 'Pilling Building', 'Engineering West', 'Crops Unit')"
+    },
+    "rooms": {
+      "bsonType": "array",
+      "description": "an array of room ids for rooms in the building",
+      "items": {
+        "bsonType": "string",
+        "description": "the room id"
+      }
+    },
+    "url": {
+      "bsonType": "string",
+      "description": "the url to the building's page (useful for end users)"
+    }
+  }
+}
