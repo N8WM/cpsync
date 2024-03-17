@@ -2,12 +2,12 @@
 
 import sys
 import time
-from typing import Callable, Optional
+from typing import Callable
 
 import requests
 from bs4 import BeautifulSoup
 
-from database.setup import DB
+from database.contexts.database import DB
 from scraper.utils import BaseURL
 
 
@@ -43,6 +43,7 @@ class BaseScraper:
         content = self.cache.get(path, None)
         if content is None:
             time.sleep(sleep)
+            print(f"Fetching .../{path}")
             response = requests.get(self.base_url.value + path, timeout=10)
             response.raise_for_status()
             content = response.text

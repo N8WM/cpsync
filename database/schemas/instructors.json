@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema",
   "bsonType": "object",
   "title": "Instructor Object Validation",
   "additionalProperties": false,
@@ -9,7 +8,7 @@
     "code",
     "last_name",
     "full_name",
-    "sections",
+    "college_id",
     "job_title",
     "office",
     "url"
@@ -35,13 +34,9 @@
       "bsonType": "string",
       "description": "the full name of the instructor (last name, first name [optional middle name or initial.])"
     },
-    "sections": {
-      "bsonType": "array",
-      "description": "an array of section ids the instructor teaches",
-      "items": {
-        "bsonType": "string",
-        "description": "the section id"
-      }
+    "college_id": {
+      "bsonType": "string",
+      "description": "the id of the college the instructor is associated with"
     },
     "job_title": {
       "bsonType": "string",

@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema",
   "bsonType": "object",
   "title": "Section Object Validation",
   "description": "Validation schema for section objects. A section at Cal Poly is a specific instance of a class.",
@@ -14,7 +13,6 @@
     "alias",
     "section_number",
     "type",
-    "ge_id",
     "requirement_code",
     "requirement_message",
     "days",
@@ -71,10 +69,6 @@
         "Activity",
         "Discussion"
       ]
-    },
-    "ge_id": {
-      "bsonType": ["string", "null"],
-      "description": "the general education id associated with the section, if one exists"
     },
     "requirement_code": {
       "bsonType": ["string", "null"],

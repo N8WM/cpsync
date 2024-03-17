@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema",
   "bsonType": "object",
   "title": "Subject Object Validation",
   "description": "Validation schema for subject objects. A subject at Cal Poly represents a department that often offers a major or minor.",
@@ -10,8 +9,7 @@
     "college_id",
     "code",
     "name",
-    "catalogue_url",
-    "courses",
+    "catalog_url",
     "url"
   ],
   "properties": {
@@ -35,17 +33,9 @@
       "bsonType": "string",
       "description": "the subject's friendly name (ex. 'Computer Science', 'Kinesiology', 'Mathematics', 'English', 'Biology')"
     },
-    "catalogue_url": {
-      "bsonType": "string",
-      "description": "the url to the subject's catalogue page (useful for end users)"
-    },
-    "courses": {
-      "bsonType": "array",
-      "description": "an array of course ids associated with the subject",
-      "items": {
-        "bsonType": "string",
-        "description": "the course id"
-      }
+    "catalog_url": {
+      "bsonType": ["string", "null"],
+      "description": "the url to the subject's catalog page if available (useful for end users)"
     },
     "url": {
       "bsonType": "string",

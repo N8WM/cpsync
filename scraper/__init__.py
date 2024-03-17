@@ -1,1 +1,1 @@
-"""Scraping package"""
+"""Scraping module"""

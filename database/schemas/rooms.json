@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema",
   "bsonType": "object",
   "title": "Room Object Validation",
   "additionalProperties": false,
@@ -8,8 +7,7 @@
     "term_id",
     "building_id",
     "number",
-    "sections",
-    "schedule_path",
+    "schedule_url",
     "registered_location_capacity",
     "url"
   ],
@@ -30,21 +28,13 @@
       "bsonType": "string",
       "description": "the room number (ex. '014-255', '002-0101', '038-0121')"
     },
-    "sections": {
-      "bsonType": "array",
-      "description": "an array of section ids for sections held in the room",
-      "items": {
-        "bsonType": "string",
-        "description": "the section id"
-      }
-    },
-    "schedule_path": {
+    "schedule_url": {
       "bsonType": "string",
-      "description": "the path to the room's schedule page (useful for end users)"
+      "description": "the url to the room's schedule page (useful for end users)"
     },
     "registered_location_capacity": {
-      "bsonType": "int",
-      "description": "the room's registered location capacity (ex. 30, 50, 100, 200)"
+      "bsonType": ["int", "null"],
+      "description": "the room's registered location capacity, if applicable (ex. 30, 50, 100, 200)"
     },
     "url": {
       "bsonType": "string",

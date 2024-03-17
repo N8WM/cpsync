@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema",
   "bsonType": "object",
   "title": "Course Object Validation",
   "additionalProperties": false,
@@ -11,10 +10,8 @@
     "code",
     "name",
     "types",
-    "sections",
-    "ge_id",
-    "requirement_code",
-    "requirement_message",
+    "requirement_codes",
+    "requirement_messages",
     "url"
   ],
   "properties": {
@@ -58,25 +55,21 @@
         ]
       }
     },
-    "sections": {
+    "requirement_codes": {
       "bsonType": "array",
-      "description": "an array of section ids associated with the course",
+      "description": "an array of requirement codes associated with the course, aligned with types and requirement messages (code representing a set of requirements for the course)",
       "items": {
-        "bsonType": "string",
-        "description": "the section id"
+        "bsonType": ["string", "null"],
+        "description": "a requirement code associated with the course type, if it exists"
       }
     },
-    "ge_id": {
-      "bsonType": ["string", "null"],
-      "description": "the general education id associated with the course, if one exists"
-    },
-    "requirement_code": {
-      "bsonType": ["string", "null"],
-      "description": "the requirement code associated with the course, if one exists (code representing a set of requirements for the course)"
-    },
-    "requirement_message": {
-      "bsonType": ["string", "null"],
-      "description": "the requirement message associated with the course, if one exists (explains what is required to take this course)"
+    "requirement_messages": {
+      "bsonType": "array",
+      "description": "an array of requirement messages associated with the course, aligned with types and requirement codes (explains what is required to take this course)",
+      "items": {
+        "bsonType": ["string", "null"],
+        "description": "a requirement message associated with the course type, if it exists"
+      }
     },
     "url": {
       "bsonType": "string",

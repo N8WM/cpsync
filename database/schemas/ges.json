@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema",
   "bsonType": "object",
   "title": "GE Object Validation",
   "description": "Validation schema for GE objects. A GE at Cal Poly is a general education requirement that certain students must fulfill in order to graduate.",

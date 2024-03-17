@@ -1,19 +1,9 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema",
   "bsonType": "object",
   "title": "Term Object Validation",
   "description": "Validation schema for term objects. A term at Cal Poly is commonly called a quarter. If one is not inferrable from a query, assume the present term.",
   "additionalProperties": false,
-  "required": [
-    "_id",
-    "start",
-    "end",
-    "season",
-    "year",
-    "buildings",
-    "colleges",
-    "url"
-  ],
+  "required": ["_id", "start", "end", "season", "year", "url"],
   "properties": {
     "_id": {
       "bsonType": "string",
@@ -36,22 +26,6 @@
       "bsonType": "int",
       "description": "the term's year (ex. 2024)",
       "minimum": 2018
-    },
-    "buildings": {
-      "bsonType": "array",
-      "description": "an array of building ids associated with the term",
-      "items": {
-        "type": "string",
-        "description": "the building id"
-      }
-    },
-    "colleges": {
-      "bsonType": "array",
-      "description": "an array of college ids associated with the term",
-      "items": {
-        "type": "string",
-        "description": "the college id"
-      }
     },
     "url": {
       "bsonType": "string",

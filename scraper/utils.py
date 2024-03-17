@@ -1,9 +1,10 @@
 """Utilities used by the scrapers"""
 
-from enum import Enum, IntEnum
-from typing import Optional
+from enum import Enum
+
 
 class BaseURL(Enum):
     """Base URLs for the scrapers"""
+
     SCHEDULES = "https://schedules.calpoly.edu/"
-    REQUIREMENTS = "REQUIREMENTS_URL"  # TODO: Add the URL
+    # Add more base URLs here
