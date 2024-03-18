@@ -23,7 +23,7 @@ class Functions:
         result = self.db[collection_name].find(filter_doc)
         return list(result)
 
-    def aggregate(self, collection_name: str, pipeline: str) -> list[dict[str, Any]]:
+    def aggregate(self, collection_name: str, pipeline: str) -> str:
         """
         Run an aggregation pipeline given a pipeline and a collection name.
 
@@ -33,5 +33,7 @@ class Functions:
         :return: a list of documents that match the pipeline
         """
         pipeline_doc = json.loads(pipeline)
-        result = self.db[collection_name].aggregate(pipeline_doc)
-        return list(result)
+        result = list(self.db[collection_name].aggregate(pipeline_doc))
+        if len(result) == 0:
+            return "No documents were found"
+        return json.dumps(list(result), indent=2)
