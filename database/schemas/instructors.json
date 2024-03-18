@@ -7,8 +7,9 @@
     "term_id",
     "code",
     "last_name",
-    "full_name",
-    "college_id",
+    "first_middle_name",
+    "colleges",
+    "subjects",
     "job_title",
     "office",
     "url"
@@ -30,21 +31,33 @@
       "bsonType": "string",
       "description": "the last name of the instructor"
     },
-    "full_name": {
+    "first_middle_name": {
       "bsonType": "string",
-      "description": "the full name of the instructor (last name, first name [optional middle name or initial.])"
+      "description": "the first and middle name of the instructor (first name + middle name or initial.)"
     },
-    "college_id": {
-      "bsonType": "string",
-      "description": "the id of the college the instructor is associated with"
+    "colleges": {
+      "bsonType": "array",
+      "description": "an array of ids of colleges the instructor teaches for",
+      "items": {
+        "bsonType": "string",
+        "description": "the college id"
+      }
+    },
+    "subjects": {
+      "bsonType": "array",
+      "description": "an array of ids of subjects the instructor teaches",
+      "items": {
+        "bsonType": "string",
+        "description": "the subject id"
+      }
     },
     "job_title": {
       "bsonType": "string",
       "description": "the job title of the instructor"
     },
     "office": {
-      "bsonType": "string",
-      "description": "the room id of the instructor's office"
+      "bsonType": ["string", "null"],
+      "description": "the room number of the instructor's office, if available (not usually included in rooms collection, but useful for end users)"
     },
     "url": {
       "bsonType": "string",

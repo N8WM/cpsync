@@ -1,7 +1,7 @@
 {
   "bsonType": "object",
   "title": "Section Object Validation",
-  "description": "Validation schema for section objects. A section at Cal Poly is a specific instance of a class.",
+  "description": "Validation schema for section objects. A section at Cal Poly is a specific instance of a class. Occasionally, a section could meet in different rooms/at different times depending on the day or in multiple locations on the same day, this could result in multiple section objects for the same section.",
   "additionalProperties": false,
   "required": [
     "_id",
@@ -11,7 +11,7 @@
     "course_id",
     "code",
     "alias",
-    "section_number",
+    "number",
     "type",
     "requirement_code",
     "requirement_message",
@@ -23,6 +23,7 @@
     "enrollment_capacity",
     "enrolled",
     "waitlisted",
+    "ics_download_url",
     "url"
   ],
   "properties": {
@@ -54,7 +55,7 @@
       "bsonType": "string",
       "description": "the section's alias; includes the course code and section number (ex. 'CSC-582-01', 'CSC-582-02')"
     },
-    "section_number": {
+    "number": {
       "bsonType": "string",
       "description": "the section number (ex. '01', '02')"
     },
@@ -79,37 +80,41 @@
       "description": "the requirement message associated with the section, if one exists (explains what is required to take this course)"
     },
     "days": {
-      "bsonType": "string",
-      "description": "a code for the days of the week the section meets (ex. 'MWF', 'TR'; letters generally ordered by day of the week)",
-      "pattern": "^[MTWRF]+$"
+      "bsonType": ["string", "null"],
+      "description": "a code for the days of the week the section meets, if available (ex. 'MWF', 'TR'; letters generally ordered by day of the week)",
+      "pattern": "^[MTWRFSU]+$"
     },
     "start": {
-      "bsonType": "string",
-      "description": "the start time of the section (ex. '04:10 PM', '10:40 AM')"
+      "bsonType": ["string", "null"],
+      "description": "the start time of the section, if available (ex. '04:10 PM', '10:40 AM')"
     },
     "end": {
-      "bsonType": "string",
-      "description": "the end time of the section (ex. '05:00 PM', '11:40 AM')"
+      "bsonType": ["string", "null"],
+      "description": "the end time of the section, if available (ex. '05:00 PM', '11:40 AM')"
     },
     "instructor_id": {
-      "bsonType": "string",
-      "description": "the id of the instructor who teaches the section"
+      "bsonType": ["string", "null"],
+      "description": "the id of the instructor who teaches the section, if available"
     },
     "room_id": {
-      "bsonType": "string",
-      "description": "the id of the room where the section meets"
+      "bsonType": ["string", "null"],
+      "description": "the id of the room where the section meets, if available"
     },
     "enrollment_capacity": {
-      "bsonType": "int",
-      "description": "the maximum number of students that can enroll in the section"
+      "bsonType": ["int", "null"],
+      "description": "the maximum number of students that can enroll in the section, if available"
     },
     "enrolled": {
-      "bsonType": "int",
-      "description": "the number of students enrolled in the section"
+      "bsonType": ["int", "null"],
+      "description": "the number of students enrolled in the section, if available"
     },
     "waitlisted": {
-      "bsonType": "int",
-      "description": "the number of students waitlisted for the section"
+      "bsonType": ["int", "null"],
+      "description": "the number of students waitlisted for the section, if available"
+    },
+    "ics_download_url": {
+      "bsonType": ["string", "null"],
+      "description": "the url to download the section's calendar file in .ics format, if available (useful for end users)"
     },
     "url": {
       "bsonType": "string",

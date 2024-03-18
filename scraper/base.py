@@ -28,7 +28,7 @@ class BaseScraper:
         self.db = db
         self.cache: dict[str, str] = cache or {}  # Content cache {path: text-content}
 
-    def soup(self, path: str, sleep: float = 0.3) -> BeautifulSoup:
+    def soup(self, path: str, sleep: float = 0.3, htm_save=True) -> BeautifulSoup:
         """
         Fetch and cache the raw text on the specified page \\
         `HTTPError` is raised if one occurred
@@ -41,6 +41,14 @@ class BaseScraper:
             - BeautifulSoup: The parsed page
         """
         content = self.cache.get(path, None)
+        if content is None and htm_save:
+            # check if the file is already saved
+            try:
+                with open(f"htm/{path.replace('/', '_')}", "r") as f:
+                    print(f" Reading .../{path}")
+                    content = f.read()
+            except FileNotFoundError:
+                pass
         if content is None:
             time.sleep(sleep)
             print(f"Fetching .../{path}")
@@ -48,6 +56,9 @@ class BaseScraper:
             response.raise_for_status()
             content = response.text
             self.cache[path] = content
+            if htm_save:
+                with open(f"htm/{path.replace('/', '_')}", "w") as f:
+                    f.write(content)
         return BeautifulSoup(content, "html.parser")
 
     def warn(self, message: str) -> None:

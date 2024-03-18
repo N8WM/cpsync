@@ -54,18 +54,21 @@ class DB:
         """Add a subject to the database"""
         self.db.subjects.insert_one(subject)
 
+    def get_course(self, course_id: str) -> dict | None:
+        """Get a course from the database"""
+        return self.db.courses.find_one({"_id": course_id})
+
     def add_course(self, course: dict) -> None:
         """Add a course to the database"""
-        existing_course = self.db.courses.find_one({"_id": course["_id"]})
-        if not existing_course:
-            self.db.courses.insert_one(course)
-        else:
-            existing_course["types"] += course["types"]
-            existing_course["requirement_codes"] += course["requirement_codes"]
-            existing_course["requirement_messages"] += course["requirement_messages"]
-            self.db.courses.update_one(
-                {"_id": course["_id"]}, {"$set": existing_course}
-            )
+        self.db.courses.insert_one(course)
+
+    def update_course(self, course: dict) -> None:
+        """Update a course in the database"""
+        self.db.courses.update_one({"_id": course["_id"]}, {"$set": course})
+
+    def get_section(self, section_id: str) -> dict | None:
+        """Get a section from the database"""
+        return self.db.sections.find_one({"_id": section_id})
 
     def add_section(self, section: dict) -> None:
         """Add a section to the database"""
@@ -75,9 +78,17 @@ class DB:
     #     """Add a GE to the database"""
     #     self.db.ges.insert_one(ge)
 
+    def get_instructor(self, instructor_id: str) -> dict | None:
+        """Get an instructor from the database"""
+        return self.db.instructors.find_one({"_id": instructor_id})
+
     def add_instructor(self, instructor: dict) -> None:
         """Add an instructor to the database"""
         self.db.instructors.insert_one(instructor)
+
+    def update_instructor(self, instructor: dict) -> None:
+        """Update an instructor in the database"""
+        self.db.instructors.update_one({"_id": instructor["_id"]}, {"$set": instructor})
 
     def close(self) -> None:
         """Close the database connection"""

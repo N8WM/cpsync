@@ -2,6 +2,7 @@
 
 import re
 
+from scraper.scrapers.instructors import InstructorsScraper
 from scraper.scrapers.subjects import SubjectsScraper
 from scraper.utils import BaseURL
 from scraper.base import BaseScraper
@@ -56,4 +57,7 @@ class CollegesScraper(BaseScraper):
             # Fetch dependent data
             SubjectsScraper(self.db, self.cache).fetch(
                 term_id, college["_id"], subject_path
+            )
+            InstructorsScraper(self.db, self.cache).fetch(
+                term_id, college["_id"], instructor_path
             )

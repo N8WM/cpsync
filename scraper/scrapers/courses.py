@@ -2,6 +2,8 @@
 
 from bs4 import Tag
 
+from database.contexts.database import DB
+from scraper.scrapers.sections import SectionsScraper
 from scraper.utils import BaseURL
 from scraper.base import BaseScraper
 
@@ -82,4 +84,24 @@ class CoursesScraper(BaseScraper):
                 "requirement_messages": [course_req_msg],
                 "url": self.base_url.value + course_path,
             }
-            self.db.add_course(course)
+            existing_course = self.db.get_course(course["_id"])
+            if existing_course is not None:
+                existing_course["types"] += course["types"]
+                existing_course["requirement_codes"] += course["requirement_codes"]
+                existing_course["requirement_messages"] += course[
+                    "requirement_messages"
+                ]
+                self.db.update_course(existing_course)
+            else:
+                self.db.add_course(course)
+                # Fetch dependent data
+                SectionsScraper(self.db, self.cache).fetch(
+                    term_id, college_id, subject_id, course["_id"], course_path
+                )
+
+
+if __name__ == "__main__":
+    db = DB()
+    db.reset()
+    scraper = CoursesScraper(db)
+    scraper.fetch("2242", "2242-52-CENG", "2242-CSC", "courses_CSC_curr.htm")
