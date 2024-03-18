@@ -25,7 +25,7 @@ class Functions:
 
     def aggregate(self, collection_name: str, pipeline: str) -> list[dict[str, Any]]:
         """
-        Aggregate a collection by a MongoDB JSON document
+        Run an aggregation pipeline given a pipeline and a collection name.
 
         :param collection_name: the name of the collection to aggregate
         :param pipeline: the pipeline to apply, must be a valid MongoDB JSON document
