@@ -138,7 +138,7 @@ The bot is designed to respond to natural language queries about any of the foll
 
 You can ask the bot questions with the `/ask` slash command. For example:
 
-`/ask Who is teaching CSC-357 in Spring 2024`
+**`/ask` Who is teaching CSC-357 in Spring 2024**
 
 > The instructors teaching CSC357 next quarter are:
 >
@@ -147,11 +147,11 @@ You can ask the bot questions with the `/ask` slash command. For example:
 > - Christopher E. Siu
 > - Devkishen Sisodia
 
-`/ask Do I need to take CSC 202 before CSC 203`
+**`/ask` Do I need to take CSC 202 before CSC 203**
 
 > Yes, you need to take CSC-202 before CSC-203. The requirement is to complete CPE/CSC 202 (formerly CPE/CSC 103) with a grade of C- or better.
 
-`/ask Tell me about Dr. Khosmood`
+**`/ask` Tell me about Dr. Khosmood**
 
 > Dr. Foaad Khosmood is an instructor with the job title "Instr Fac AY". He teaches for the College of Engineering (CENG) and is associated with the subjects Computer Engineering (CPE) and Computer Science (CSC). His office is located in room 014-0204. More information about Dr. Khosmood can be found on his [profile page](https://schedules.calpoly.edu/person_foaad_curr.htm).
 
