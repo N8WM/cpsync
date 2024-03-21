@@ -140,7 +140,7 @@ You can ask the bot questions with the `/ask` slash command. For example:
 
 **`/ask` Who is teaching CSC-357 in Spring 2024**
 
-> The instructors teaching CSC357 next quarter are:
+> The instructors teaching CSC-357 next quarter are:
 >
 > - Phillip L. Nico
 > - Joydeep Mukherjee
