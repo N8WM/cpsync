@@ -8,6 +8,13 @@ CPSync is a Discord bot that uses natural language processing (NLP) to answer qu
 
 ## Setup
 
+Start by cloning the repository and navigating to the project directory in your terminal:
+
+```bash
+git clone https://github.com/N8WM/cpsync.git
+cd cpsync
+```
+
 To run locally, there are several steps you need to follow to set up the project. You must set up MongoDB, the Discord bot, an OpenAI API key, and Python, according to the instructions below.
 
 ### MongoDB Setup
@@ -95,7 +102,7 @@ Where `TERM_HISTORY` is an optional argument that specifies the number of terms 
 Once the data has been scraped, if you want to save it, you can dump the data into the `./dump` directory using the following command:
 
 ```bash
-python3 dump_mongo.py
+./dump_mongo.sh
 ```
 
 This will overwrite the existing data in the `./dump` directory.
@@ -103,7 +110,7 @@ This will overwrite the existing data in the `./dump` directory.
 **Loading from Database Dump** - Fastest method but data may be outdated
 
 ```bash
-python3 load_mongo.py
+./load_mongo.sh
 ```
 
 This will load the data from `./dump/*` into the MongoDB database. The data currently provided in the `./dump` directory is a snapshot of Schedules from March 20th, 2024, and includes data for the Winter 2024 and unofficial Spring 2024 terms.
