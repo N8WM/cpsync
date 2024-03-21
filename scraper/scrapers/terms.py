@@ -9,7 +9,7 @@ from scraper.scrapers.buildings import BuildingsScraper
 from scraper.scrapers.colleges import CollegesScraper
 from scraper.scrapers.rooms import RoomsScraper
 from scraper.utils import BaseURL
-from scraper.base import BaseScraper, ID, IDs
+from scraper.base import BaseScraper
 from database.contexts.database import DB
 
 daterange_re = r"^\s*[0-9]{2}/[0-9]{2}/[0-9]{4}\s+to\s+[0-9]{2}/[0-9]{2}/[0-9]{4}\s*$"
