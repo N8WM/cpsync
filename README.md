@@ -53,7 +53,7 @@ This project requires access to a valid OpenAI API key. You can obtain one by si
 
 ### Python Setup
 
-This project was developed using Python 3.11.7. You can install it from the [official website](https://www.python.org/downloads/).
+This project was developed using Python 3.11.7, but anything as new as 3.10+ should suffice. You can install it from the [official website](https://www.python.org/downloads/).
 
 You may want to use a virtual environment to manage the dependencies for this project. You can create and activate a virtual environment using the following command:
 
@@ -136,7 +136,9 @@ The bot is designed to respond to natural language queries about any of the foll
 - Sections
 - Instructors
 
-You can ask the bot questions with the `/ask` slash command. For example:
+You can ask the bot questions with the `/ask` slash command.
+
+### Examples
 
 **`/ask` Who is teaching CSC-357 in Spring 2024**
 
@@ -147,6 +149,10 @@ You can ask the bot questions with the `/ask` slash command. For example:
 > - Christopher E. Siu
 > - Devkishen Sisodia
 
+**`/ask` What quarter is CSC-582 available?**
+
+> The course CSC-582, "Computational Linguistics," is available in the Winter 2024 quarter.
+
 **`/ask` Do I need to take CSC 202 before CSC 203**
 
 > Yes, you need to take CSC-202 before CSC-203. The requirement is to complete CPE/CSC 202 (formerly CPE/CSC 103) with a grade of C- or better.
@@ -154,6 +160,10 @@ You can ask the bot questions with the `/ask` slash command. For example:
 **`/ask` Tell me about Dr. Khosmood**
 
 > Dr. Foaad Khosmood is an instructor with the job title "Instr Fac AY". He teaches for the College of Engineering (CENG) and is associated with the subjects Computer Engineering (CPE) and Computer Science (CSC). His office is located in room 014-0204. More information about Dr. Khosmood can be found on his [profile page](https://schedules.calpoly.edu/person_foaad_curr.htm).
+
+**`/ask` Where is room 014-0255?**
+
+Room 014-0255 is located in building 014 during the Winter 2024 term. It has a registered location capacity of 30. You can find more information and its schedule at [this link](https://schedules.calpoly.edu/location_014-0255_curr.htm). For general information about the building, you can visit [this page](https://schedules.calpoly.edu/all_location_curr.htm#014).
 
 ## Resources
 
