@@ -170,7 +170,7 @@ You can ask the bot questions with the `/ask` slash command.
 
 **`/ask` Where is room 014-0255?**
 
-Room 014-0255 is located in building 014 during the Winter 2024 term. It has a registered location capacity of 30. You can find more information and its schedule at [this link](https://schedules.calpoly.edu/location_014-0255_curr.htm). For general information about the building, you can visit [this page](https://schedules.calpoly.edu/all_location_curr.htm#014).
+> Room 014-0255 is located in building 014 during the Winter 2024 term. It has a registered location capacity of 30. You can find more information and its schedule at [this link](https://schedules.calpoly.edu/location_014-0255_curr.htm). For general information about the building, you can visit [this page](https://schedules.calpoly.edu/all_location_curr.htm#014).
 
 ## Resources
 
