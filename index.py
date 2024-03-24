@@ -5,7 +5,9 @@ import dotenv
 
 from flask import Flask, request, jsonify
 from database.contexts.database import DB
-from database.contexts.autogen import AutoGenDatabase
+from database.contexts.functions import Functions
+from database.schemas import schema_list
+from agent.controller import Agent
 
 dotenv.load_dotenv()
 
@@ -15,12 +17,11 @@ class Server:
 
     app = Flask(__name__)
 
-    def __init__(self):
+    def __init__(self, current_term_id: str):
         """Initialize the server"""
         self.database = DB()
-        self.autogen = AutoGenDatabase(
-            database=self.database, schemas_path="database/schemas"
-        )
+        self.functions = Functions(self.database)
+        self.agent = Agent(schema_list, current_term_id, self.functions.aggregate)
         self.register_routes()
 
     def register_routes(self):
@@ -29,8 +30,7 @@ class Server:
 
     def ask(self):
         query = request.args.get("query", "")
-        self.autogen.initiate_assistant(query)
-        response = {"answer": self.autogen.get_last_message()}
+        response = {"answer": self.agent.respond(query)}
         return jsonify(response)
 
     def run(self, port):
@@ -39,5 +39,5 @@ class Server:
 
 
 if __name__ == "__main__":
-    server = Server()
+    server = Server("2242")
     server.run(port=5000)

@@ -23,3 +23,18 @@ course = __load_json("database/schemas/courses.json")
 section = __load_json("database/schemas/sections.json")
 # ge = __load_json("database/schemas/ges.json")
 instructor = __load_json("database/schemas/instructors.json")
+
+schema_list = json.dumps(
+    {
+        "terms": term,
+        "buildings": building,
+        "rooms": room,
+        "colleges": college,
+        "subjects": subject,
+        "courses": course,
+        "sections": section,
+        # "ges": ge,
+        "instructors": instructor,
+    },
+    indent=2,
+)
